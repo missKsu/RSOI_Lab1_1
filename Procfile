@@ -1,1 +1,1 @@
-web: app.go
+web: RSOI_Lab1_!
