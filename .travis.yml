@@ -1,0 +1,12 @@
+language: go
+go:
+- '1.8'
+script:
+- go build
+deploy:
+  provider: heroku
+  api_key:
+    secure: saL3erP3qlf6jMLr0uGUZWFVioF5TleVKgM9tNhUcqHKz/vNb/06bqe3FwkvUmwL9qrE0GtsPWEbAlNw2i7iQXg1l+uiRMgbFyTZ9DENsjUXYOsLi3KOGl4SUOPws66uHg81UMcAT+HMXElfDPBwe0LtpYdrJ+4YsTpCAKzDjoqHp+Hkmk32WLKkUv9S9j5zeQoa6UoZD/FHp1P9ur/Ou6brsFf0q1+LFbkCkJILElKonJYV5ypavCDOc8YPxJRGj23emXWFxx8/FIDDBIMN0k3wILR4uh+1e3mzsGCwBDkCaMgPdeI/Vk1P6Sqd/yfz45XfAgSUIkAWDBAJH7DlzijmbUHH7Lg9Kwxv5s8+MBbk6YtfGOJV4ll1FpMUQSdVT/PGy1GIxZIf2/4M3ARhCwf3e40bYIu3BpVqohbfxaQouMjg/FvDtV8JZkg24BI3nkAkplPkJR86TsttaeCQADw52XQGZICN7ZdFXdfcuQlWZeKODqRdCY04iE3xiS9zL2OJBPBuPmwtr8GJgygEzEdXSPqAss3jWyfIwWTEGpiHyNUXEKT3u1pn78zZEPxHGz3JikZ2AmI9p2YhUmi1Me/KJrUJCq486/7OuW0lPUunKt5TOxcSyC530eHPMZ2nvKsLvMk/P1UDxbV03/24My2mrPwUgdltoc32mLf32BE=
+  app: quiet-garden-65954
+  on:
+    repo: missKsu/RSOI_Lab1_1
