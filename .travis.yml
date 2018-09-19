@@ -10,3 +10,4 @@ deploy:
   app: whispering-badlands-32857
   on:
     repo: missKsu/RSOI_Lab1_1
+  skip_cleanup: true
