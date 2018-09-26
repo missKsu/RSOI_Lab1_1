@@ -54,7 +54,7 @@ func TestInc(t *testing.T) {
 }
 
 func TestAdd(t *testing.T) {
-    tests:=[]AddData{{"4","5","9"},{"2","3","5"},{"","3","Incorrect request"}}
+    tests:=[]AddData{{"4","5","9"},{"2","3","5"},{"","3","Incorrect"}}
     for _,val := range tests{
         urlData := url.Values{}
         urlData.Set("sum", val.sum)
