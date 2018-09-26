@@ -71,7 +71,7 @@ func (a *App) Add(w http.ResponseWriter, r *http.Request) {
     		CheckErr(err)
     		fmt.Fprint(w,var1+var2)
     	}else{
-    		fmt.Fprint(w, "Incorrect request")	
+    		fmt.Fprint(w, "Incorrect")	
     	}
     }
 }
