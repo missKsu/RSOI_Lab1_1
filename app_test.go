@@ -37,7 +37,7 @@ func TestAdd(t *testing.T) {
         urlData := url.Values{}
         urlData.Set("sum", val.sum)
         urlData.Set("element", val.element)
-        res := check("Post","http://localhost:3000/api/add",urlData)
+        res := check("Post","http://whispering-badlands-32857.herokuapp.com//api/add",urlData)
 
         if res != val.result {
             t.Errorf("%s", res)
