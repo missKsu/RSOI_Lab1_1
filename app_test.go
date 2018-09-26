@@ -23,7 +23,7 @@ func TestInc(t *testing.T) {
     for _,val := range tests{
         urlData := url.Values{}
         urlData.Set("element", val.element)
-        res := check("Post","http://whispering-badlands-32857.herokuapp.com/api/inc",urlData)
+        res := check("Post","http://whispering-badlands-32857.herokuapp.com/inc",urlData)
 
         if res != val.result {
             t.Errorf("%s", res)
