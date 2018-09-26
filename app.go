@@ -43,7 +43,7 @@ func main(){
     api.HandleFunc("/add",router.Add).Methods("POST")
     api.HandleFunc("/inc",router.Inc).Methods("POST")
 
-    log.Fatal(http.ListenAndServe(":", router.Router))
+    log.Fatal(http.ListenAndServe(":" + os.Getenv("PORT"), router.Router))
     
 }
 
