@@ -5,7 +5,8 @@ import (
     "log"
     "fmt"
 	"github.com/gorilla/mux"
-	"strconv")
+	"strconv"
+	"os")
 
 func checkErr(err error) {
 	if err != nil {
