@@ -13,22 +13,45 @@ func checkErr(err error) {
 	}
 }
 
-func main(){
-	router := mux.NewRouter().StrictSlash(true)
-
-    api := router.PathPrefix("/api").Subrouter()
-    api.HandleFunc("/",Welcome).Methods("GET")
-    api.HandleFunc("/add",Add).Methods("POST")
-    api.HandleFunc("/inc",Inc).Methods("POST")
-
-    log.Fatal(http.ListenAndServe(":3000", router))
+type App struct {
+	Router *mux.Router
 }
 
-func Welcome(w http.ResponseWriter, r *http.Request) {
+func (a *App) Initialize() {
+	a.Router = mux.NewRouter().StrictSlash(true)
+	a.InitializeRoutes()
+}
+
+func (a *App) InitializeRoutes() {
+	a.Router = a.Router.PathPrefix("/api").Subrouter()
+	a.Router.HandleFunc("/",a.Welcome).Methods("GET")
+	a.Router.HandleFunc("/add",a.Add).Methods("POST")
+	a.Router.HandleFunc("/inc",a.Inc).Methods("POST")
+}
+
+func (a *App) Run(addr string) {
+	log.Fatal(http.ListenAndServe(addr, a.Router))
+}
+
+func main(){
+	var router App
+	router.Initialize()
+	//router.InitializeRoutes()
+	
+    api := router.Router.PathPrefix("/api").Subrouter()
+    api.HandleFunc("/",router.Welcome).Methods("GET")
+    api.HandleFunc("/add",router.Add).Methods("POST")
+    api.HandleFunc("/inc",router.Inc).Methods("POST")
+
+    log.Fatal(http.ListenAndServe(":3000", router.Router))
+    
+}
+
+func (a *App) Welcome(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "Hello World!!!")
 }
 
-func Add(w http.ResponseWriter, r *http.Request) {
+func (a *App) Add(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
     res := CheckErr(err)
     if res!="Continue" {
@@ -52,7 +75,7 @@ func Add(w http.ResponseWriter, r *http.Request) {
     }
 }
 
-func Inc(w http.ResponseWriter, r *http.Request) {
+func (a *App) Inc(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
     res := CheckErr(err)
     if res!="Continue" {
